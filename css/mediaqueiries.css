@@ -56,8 +56,6 @@
     }
 }
 
-
-/* الشاشات التي تكون أقل من 1024px */
 @media (max-width: 1024px) {
     .leaderboard {
         width: 90%;
@@ -77,17 +75,12 @@
     
 }
 
-/* الشاشات التي تكون أقل من 768px */
 @media (max-width: 768px) {
-    .leaderboard-container {
-        /* padding: 60px 15px;        ;  */
-    }
     .users-box {
         gap: 5px; 
     }
     .bars {
         gap: 20px; 
-        /* margin-block: 40px; */
     }
     .bar {
         width: 60px; 
@@ -102,21 +95,22 @@
     }
 }
 
-/* الشاشات التي تكون أقل من 480px */
+
 @media (max-width: 480px) {
     .leaderboard {
         width: 100%; 
     }
     .users-box {
-        flex-direction: column; 
         align-items: center;
+        padding: 12px;
+    }
+    .leaderboard h2, .leaderboard h3 {
+        padding-inline: 16px;
     }
     .users-box i {
         font-size: 30px; 
     }
     .bars {
-        /* flex-wrap: wrap; 
-        justify-content: space-around; */
         gap: 10px; 
     }
     .bar {

@@ -18,27 +18,30 @@ for (let i = 0; i < 10; i++) {
 //     { name: 'trainee-five', score: 890, img: 'assets/04aaeee2-237d-488b-b006-4256687eae50.jpg' },
 // ];
 
+const proxy = 'https://api.allorigins.win/raw?url=';
+const apiURL = 'http://fitbuddy.runasp.net/api/Ranking';
+
 async function fetchDataAndCreateChart() {
     try {
-        const response = await fetch('http://fitbuddy.runasp.net/api/Ranking'); 
+        const response = await fetch(proxy + encodeURIComponent(apiURL));
+
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
 
-        const data = await response.json(); 
+        const data = await response.json();
 
         const formattedData = data.map(item => ({
             name: item.name,
             score: item.score,
-            img: item.image || 'assets/PicDefault.png', 
+            img: item.image || 'assets/PicDefault.png',
         }));
 
-        createChart(formattedData); 
+        createChart(formattedData);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
-
 
 const maxHeights = [250, 200, 150, 100, 50, 30]; 
 
@@ -67,12 +70,10 @@ function createChart(data) {
         bar.appendChild(img);
         bar.appendChild(scoreLabel);
 
-        // إنشاء اسم المستخدم وإضافته خارج الشريط
         const nameLabel = document.createElement('div');
         nameLabel.className = 'name-label';
         nameLabel.textContent = item.name;
 
-        // إضافة الشريط واسم المستخدم للحاوية
         barWrapper.appendChild(bar);
         barWrapper.appendChild(nameLabel);
         chartContainer.appendChild(barWrapper);
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let scrollToTopBtn = document.getElementById("scrollToTopBtn");
 
     window.addEventListener("scroll", function () {
-        if (window.scrollY > 200) { // يظهر بعد 200 بكسل
+        if (window.scrollY > 200) { 
             scrollToTopBtn.classList.add("show");
         } else {
             scrollToTopBtn.classList.remove("show");
